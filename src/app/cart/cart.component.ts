@@ -23,6 +23,11 @@ export class CartComponent implements OnInit {
   onSubmit() {
     this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
+    this.cartService
+    .submitOrder(this.checkoutForm.value.name, this.checkoutForm.value.address)
+    .subscribe((response) => {
+      console.log('Order submitted successfully', response);
+    });
     this.checkoutForm.reset();
   }
 
